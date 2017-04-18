@@ -424,3 +424,8 @@ RUN apt-get clean && \
 
 # Set default work directory
 WORKDIR /var/www
+
+RUN mkdir /var/www/viender
+RUN mkdir /var/www/viender/storage
+RUN chmod -R gu+w /var/www/viender/storage
+RUN chmod -R guo+w /var/www/viender/storage
