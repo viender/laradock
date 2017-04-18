@@ -432,6 +432,7 @@ services:
         - php-fpm
       networks:
         - frontend
+        - backend
 
 ### Certbot Container ##################################
 
