@@ -540,7 +540,7 @@ services:
         dockerfile: Dockerfile-${PHP_VERSION}
       volumes_from:
         - applications
-      command: php artisan queue:work
+      command: php ${LARAVEL_ARTISAN_FILE} queue:work
 
 ### Networks Setup ############################################
 
