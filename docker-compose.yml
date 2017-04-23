@@ -611,3 +611,5 @@ volumes:
     driver: "local"
   elasticsearch-plugins:
     driver: "local"
+  nginx:
+    driver: "local"
