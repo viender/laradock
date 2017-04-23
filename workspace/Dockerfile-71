@@ -237,6 +237,13 @@ RUN if [ ${INSTALL_AEROSPIKE_EXTENSION} = false ]; then \
 ;fi
 
 #####################################
+# PHP Redis:
+#####################################
+RUN pecl install -o -f redis \
+&&  rm -rf /tmp/pear \
+&&  echo 'extension=redis.so' >> /etc/php/7.0/cli/php.ini
+
+#####################################
 # Non-root user : PHPUnit path
 #####################################
 
