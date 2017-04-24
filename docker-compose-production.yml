@@ -11,7 +11,7 @@ services:
 
 ### Application Service Container #################################
 
-    app:
+    viender:
       build:
         context: ./..
         args:
@@ -36,7 +36,7 @@ services:
         - backend
 
 ### Application Worker Container ###################################################
-    worker:
+    viender-worker:
       build:
         context: ./..
         args:
@@ -50,7 +50,7 @@ services:
         - certs:/etc/letsencrypt
         - certs-data:/data/letsencrypt
       depends_on:
-        - app
+        - viender
       networks:
         - backend
       command: php ${LARAVEL_ARTISAN_FILE_NAME} queue:work
@@ -64,7 +64,7 @@ services:
       expose:
         - "9000"
       depends_on:
-        - app
+        - viender
       networks:
         - frontend
         - backend
@@ -214,7 +214,7 @@ services:
     aerospike:
       build: ./aerospike
       volumes_from:
-        - app
+        - applications
       volumes:
         - ${DATA_SAVE_PATH}/aerospike:/opt/aerospike/data
       ports:
@@ -234,7 +234,7 @@ services:
       ports:
         - "${MEMCACHED_HOST_PORT}:11211"
       depends_on:
-        - app
+        - viender
       networks:
         - backend
 
@@ -246,7 +246,7 @@ services:
         - "${BEANSTALKD_HOST_PORT}:11300"
       privileged: true
       depends_on:
-        - app
+        - viender
       networks:
         - backend
 
@@ -263,7 +263,7 @@ services:
         - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
         - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       depends_on:
-        - app
+        - viender
       networks:
         - backend
 
@@ -293,7 +293,7 @@ services:
         - ./logs/caddy:/var/log/caddy
         - caddy:/root/.caddy
       depends_on:
-        - app
+        - viender
       networks:
         - frontend
         - backend
@@ -322,7 +322,7 @@ services:
       ports:
         - "${ADM_PORT}:8080"
       depends_on:
-        - app
+        - viender
       networks:
         - frontend
 
@@ -401,7 +401,7 @@ services:
         - BACKEND_PORT=${VARNISH_BACKEND_PORT}
         - VARNISH_SERVER=${VARNISH_PROXY1_SERVER}
       links:
-        - app
+        - viender
       networks:
         - frontend
 
@@ -420,7 +420,7 @@ services:
         - BACKEND_PORT=${VARNISH_BACKEND_PORT}
         - VARNISH_SERVER=${VARNISH_PROXY2_SERVER}
       links:
-        - app
+        - viender
       networks:
         - frontend
 
