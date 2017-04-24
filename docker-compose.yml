@@ -82,18 +82,6 @@ services:
       networks:
         - backend
 
-### PHP Worker Container #####################################
-
-    php-worker:
-      build:
-        context: ./php-worker
-      volumes_from:
-        - applications
-      depends_on:
-        - workspace
-      networks:
-        - backend
-
 ### Nginx Server Container ##################################
 
     nginx:
