@@ -21,7 +21,7 @@ services:
         - applications
       volumes:
         - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
-        - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+        - ${VIENDER_NGINX_SITES_PATH}:/etc/nginx/sites-available
         - certs:/etc/letsencrypt
         - certs-data:/data/letsencrypt
       ports:
@@ -46,7 +46,7 @@ services:
         - applications
       volumes:
         - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
-        - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+        - ${VIENDER_NGINX_SITES_PATH}:/etc/nginx/sites-available
         - certs:/etc/letsencrypt
         - certs-data:/data/letsencrypt
       depends_on:
