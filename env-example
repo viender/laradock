@@ -163,6 +163,9 @@ COMPOSE_CONVERT_WINDOWS_PATHS=1
 
 ### to be continue neo4j mongo rethinkdb redis aerospike pgadmin ...
 
+### MongoDB
+MONGODB_PORT=27017
+
 ### REDIS
 REDIS_PORT=6379
 
