@@ -556,6 +556,19 @@ services:
         - backend
       command: php ${LARAVEL_ARTISAN_FILE_NAME} queue:work
 
+### Viender Feed Container ###########################
+
+    viender-feed:
+      build:
+        context: ../feed
+      volumes_from:
+        - applications
+      ports:
+        - "3000:3000"
+      networks:
+        - frontend
+        - backend
+
 ### Networks Setup ############################################
 
 networks:
