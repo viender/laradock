@@ -593,7 +593,7 @@ services:
 
 ### Viender Feed Container ###########################
 
-    viender-feed:
+    feed:
       build:
         context: ../feed
       volumes_from:
