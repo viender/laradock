@@ -16,6 +16,12 @@ RUN apk update \
     && rm /etc/nginx/conf.d/default.conf \
     && echo "upstream php-upstream { server ${PHP_UPSTREAM}:9000; }" > /etc/nginx/conf.d/upstream.conf
 
+# Set /data/letsencrypt permission
+RUN mkdir /data && \
+    mkdir /data/letsencrypt && \
+    chmod -R 550 /data/letsencrypt && \
+    chown -R root.www-data /data/letsencrypt
+
 CMD ["nginx"]
 
 EXPOSE 80 443
