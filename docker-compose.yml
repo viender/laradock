@@ -650,6 +650,8 @@ volumes:
   elasticsearch-plugins:
     driver: "local"
   certs:
-    driver: "local"
+    external:
+      name: viender-certs
   certs-data:
-    driver: "local"
+    external:
+      name: viender-certs-data
