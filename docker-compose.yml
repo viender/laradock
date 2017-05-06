@@ -8,6 +8,7 @@ services:
       image: tianon/true
       volumes:
         - ${APPLICATION}:/var/www
+        - /var/repo/viender.git: /var/repo/viender.git
 
 ### Workspace Utilities Container ###########################
 
