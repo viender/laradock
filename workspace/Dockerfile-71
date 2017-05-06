@@ -286,8 +286,12 @@ RUN apt-get clean && \
 # Set default work directory
 WORKDIR /var/www
 
-# Set storage directory permission
-RUN mkdir /var/www/viender && \
-    mkdir /var/www/viender/storage && \
-    chmod -R gu+w /var/www/viender/storage &&\
-    chmod -R guo+w /var/www/viender/storage
+RUN export APP_DIR=/var/www
+
+# Workaround for AUFS-related permission issue
+RUN mkdir -p  /var/www/viender/storage; mkdir -p /var/www/viender/bootstrap/cache; cp -R /var/www /var/www-copy; rm -r /var/www; mv /var/www-copy /var/www; chmod -R 550 /var/www; chown -R root.www-data /var/www; chmod -R 755 /var/www/viender/bootstrap/cache; chmod -R gu+w /var/www/viender/storage; chmod -R guo+w /var/www/viender/storage;
+
+#RUN mkdir /var/www/viender && \
+#    mkdir /var/www/viender/storage && \
+#    chmod -R gu+w /var/www/viender/storage &&\
+#    chmod -R guo+w /var/www/viender/storage
