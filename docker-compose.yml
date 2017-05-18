@@ -600,7 +600,7 @@ services:
       volumes_from:
         - applications
       ports:
-        - "3000:3000"
+        - "13000:3000"
       networks:
         - frontend
         - backend
