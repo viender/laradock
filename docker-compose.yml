@@ -610,8 +610,6 @@ services:
     imaginary:
       build:
         context: imaginary
-        args:
-          - -enable-url-source
       volumes_from:
         - applications
       ports:
@@ -670,3 +668,5 @@ volumes:
   certs-data:
     external:
       name: viender-certs-data
+  imaginary:
+    driver: "local"
