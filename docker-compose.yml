@@ -605,6 +605,18 @@ services:
         - frontend
         - backend
 
+### Imaginary Container ###########################
+
+    imaginary:
+      build:
+        context: imaginary
+        args:
+          - -enable-url-source
+      ports:
+        - "${IMAGINARY_PORT}:9000"
+      networks:
+        - backend
+
 ### Networks Setup ############################################
 
 networks:
