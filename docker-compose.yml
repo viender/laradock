@@ -612,6 +612,8 @@ services:
         context: imaginary
         args:
           - -enable-url-source
+      volumes_from:
+        - applications
       ports:
         - "${IMAGINARY_PORT}:9000"
       networks:
